@@ -16,15 +16,8 @@ open class Human(
         y += dy
     }
 
-    open fun printInfo() {
-        println("$fullName | возраст: $age | скорость: ${"%.2f".format(currentSpeed)} м/c | координаты: (${x.format(2)}, ${y.format(2)})")
+    override fun printInfo() {
+        println("$fullName | возраст: $age | скорость: ${"%.2f".format(currentSpeed)} м/с | координаты: (${x.format(2)}, ${y.format(2)})")
     }
-
-    private fun Double.format(digits: Int) = "%.${digits}f".format(this)
-}
-    open fun printInfo() {
-        println("$fullName | возраст: $age | скорость: ${"%.2f".format(currentSpeed)} м/c | координаты: (${x.format(2)}, ${y.format(2)})")
-    }
-
-    private fun Double.format(digits: Int) = "%.${digits}f".format(this)
+    private fun Double.format(digits: Int): String = "%.${digits}f".format(this)
 }

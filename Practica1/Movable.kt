@@ -3,5 +3,6 @@ interface Movable {
     var y: Double
     var currentSpeed: Double
 
-    fun move(dt: Double = 1.0)
+    fun move(dt: Double)
+    fun printInfo()
 }

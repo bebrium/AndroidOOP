@@ -26,13 +26,13 @@ fun main() {
 
         humans.forEach { human ->
             threads += Thread {
-                human.move()
+                human.move(1.0)
                 human.printInfo()
             }
         }
 
         threads += Thread {
-            driver.move()
+            driver.move(1.0)
             driver.printInfo()
         }
 

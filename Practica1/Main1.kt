@@ -1,44 +1,26 @@
-import kotlin.random.Random
+import kotlin.concurrent.thread
 
 fun main() {
-    val humanCount = 3
-    val simTime = 5
-
-    val humans = Array(humanCount) { i ->
-        Human(
-            fullName = "Негрик ${i + 1}",
-            age = 18 + Random.nextInt(50),
-            currentSpeed = 0.5 + Random.nextDouble() * 1.5
-        )
-    }
-
-    val driver = Driver(
-        fullName = "Элитный негрик водитель",
-        age = 35,
-        currentSpeed = 2.0,
-        direction = Math.PI / 2
+    val humans = listOf(
+        Human("Иванов Иван", 25, 1.2),
+        Human("Петрова Анна", 30, 1.0),
+        Driver("Сидоров Алексей", 40, 2.0)
     )
 
-    for (sec in 1..simTime) {
-        println("\n=== Секунда $sec ===")
+    val simulationTime = 10
+    val dt = 0.1
 
-        val threads = mutableListOf<Thread>()
-
-        humans.forEach { human ->
-            threads += Thread {
-                human.move(1.0)
-                human.printInfo()
+    val threads = humans.map { human ->
+        thread {
+            repeat((simulationTime / dt).toInt()) {
+                human.move(dt)
+                Thread.sleep((dt * 1000).toLong())
             }
         }
-
-        threads += Thread {
-            driver.move(1.0)
-            driver.printInfo()
-        }
-
-        threads.forEach { it.start() }
-        threads.forEach { it.join() }
     }
 
-    println("\n Симуляция завершена.")
+    threads.forEach { it.join() }
+
+
+    humans.forEach { it.printInfo() }
 }

@@ -1,4 +1,7 @@
 import kotlin.random.Random
+import kotlin.math.*
+
+fun Double.format(decimals: Int): String = "%.${decimals}f".format(this)
 
 open class Human(
     val fullName: String,
@@ -9,15 +12,13 @@ open class Human(
     override var y: Double = 0.0
 
     override fun move(dt: Double) {
-        val angle = Random.nextDouble() * 2 * Math.PI
-        val dx = currentSpeed * Math.cos(angle) * dt
-        val dy = currentSpeed * Math.sin(angle) * dt
-        x += dx
-        y += dy
+        val angle = Random.nextDouble() * 2 * PI
+        x += currentSpeed * cos(angle) * dt
+        y += currentSpeed * sin(angle) * dt
     }
 
     override fun printInfo() {
-        println("$fullName | возраст: $age | скорость: ${"%.2f".format(currentSpeed)} м/с | координаты: (${x.format(2)}, ${y.format(2)})")
+        println("$fullName | Возраст: $age | Скорость: ${currentSpeed.format(2)} м/с | " +
+                "Координаты: (${x.format(2)}, ${y.format(2)})")
     }
-    private fun Double.format(digits: Int): String = "%.${digits}f".format(this)
 }

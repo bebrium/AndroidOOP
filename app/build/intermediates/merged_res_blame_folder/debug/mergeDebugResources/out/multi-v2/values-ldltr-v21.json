@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.androidoop.app-mergeDebugResources-2:/values-ldltr-v21/values-ldltr-v21.xml",
+            "outputFile": "com.example.AndroidOOP1.app-mergeDebugResources-2:/values-ldltr-v21/values-ldltr-v21.xml",
             "map": [
                 {
-                    "source": "E:\\gradle-cache\\caches\\transforms-4\\b8d48304dfa78aad88d9575f74210ba8\\transformed\\appcompat-1.7.0\\res\\values-ldltr-v21\\values-ldltr-v21.xml",
+                    "source": "E:\\gradle-cache\\caches\\8.13\\transforms\\b4955810418b932aff19f6475156d28c\\transformed\\appcompat-1.7.0\\res\\values-ldltr-v21\\values-ldltr-v21.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

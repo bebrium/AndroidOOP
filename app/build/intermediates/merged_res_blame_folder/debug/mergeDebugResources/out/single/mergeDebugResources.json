@@ -1,102 +1,86 @@
 [
     {
-        "merged": "com.example.androidoop.app-debug-4:/layout_activity_media_player.xml.flat",
-        "source": "com.example.androidoop.app-main-6:/layout/activity_media_player.xml"
+        "merged": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-debug-4:\\layout_activity_calculator.xml.flat",
+        "source": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-main-6:\\layout\\activity_calculator.xml"
     },
     {
-        "merged": "com.example.androidoop.app-debug-4:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.androidoop.app-main-6:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-debug-4:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-main-6:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.androidoop.app-debug-4:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.androidoop.app-main-6:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-debug-4:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-main-6:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.androidoop.app-debug-4:/layout_activity_location.xml.flat",
-        "source": "com.example.androidoop.app-main-6:/layout/activity_location.xml"
+        "merged": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-debug-4:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-main-6:\\drawable\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.example.androidoop.app-debug-4:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.androidoop.app-main-6:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-debug-4:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-main-6:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.androidoop.app-debug-4:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.example.androidoop.app-main-6:/drawable/ic_launcher_foreground.xml"
+        "merged": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-debug-4:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-main-6:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.androidoop.app-debug-4:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.example.androidoop.app-main-6:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-debug-4:\\drawable_ic_launcher_background.xml.flat",
+        "source": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-main-6:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "com.example.androidoop.app-debug-4:/xml_data_extraction_rules.xml.flat",
-        "source": "com.example.androidoop.app-main-6:/xml/data_extraction_rules.xml"
+        "merged": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-debug-4:\\xml_data_extraction_rules.xml.flat",
+        "source": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-main-6:\\xml\\data_extraction_rules.xml"
     },
     {
-        "merged": "com.example.androidoop.app-debug-4:/drawable_ic_volume_down.xml.flat",
-        "source": "com.example.androidoop.app-main-6:/drawable/ic_volume_down.xml"
+        "merged": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-debug-4:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-main-6:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.androidoop.app-debug-4:/drawable_ic_play.xml.flat",
-        "source": "com.example.androidoop.app-main-6:/drawable/ic_play.xml"
+        "merged": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-debug-4:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-main-6:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.androidoop.app-debug-4:/drawable_ic_skip_previous.xml.flat",
-        "source": "com.example.androidoop.app-main-6:/drawable/ic_skip_previous.xml"
+        "merged": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-debug-4:\\layout_activity_media_player.xml.flat",
+        "source": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-main-6:\\layout\\activity_media_player.xml"
     },
     {
-        "merged": "com.example.androidoop.app-debug-4:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.androidoop.app-main-6:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-debug-4:\\layout_activity_gps.xml.flat",
+        "source": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-main-6:\\layout\\activity_gps.xml"
     },
     {
-        "merged": "com.example.androidoop.app-debug-4:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.example.androidoop.app-main-6:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-debug-4:\\mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-main-6:\\mipmap-anydpi\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.example.androidoop.app-debug-4:/drawable_ic_stop.xml.flat",
-        "source": "com.example.androidoop.app-main-6:/drawable/ic_stop.xml"
+        "merged": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-debug-4:\\layout_activity_main.xml.flat",
+        "source": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-main-6:\\layout\\activity_main.xml"
     },
     {
-        "merged": "com.example.androidoop.app-debug-4:/drawable_ic_skip_next.xml.flat",
-        "source": "com.example.androidoop.app-main-6:/drawable/ic_skip_next.xml"
+        "merged": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-debug-4:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-main-6:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.androidoop.app-debug-4:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.example.androidoop.app-main-6:/drawable/ic_launcher_background.xml"
+        "merged": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-debug-4:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-main-6:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.androidoop.app-debug-4:/layout_activity_main.xml.flat",
-        "source": "com.example.androidoop.app-main-6:/layout/activity_main.xml"
+        "merged": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-debug-4:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-main-6:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.androidoop.app-debug-4:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.androidoop.app-main-6:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-debug-4:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-main-6:\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.androidoop.app-debug-4:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.androidoop.app-main-6:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-debug-4:\\xml_backup_rules.xml.flat",
+        "source": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-main-6:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "com.example.androidoop.app-debug-4:/layout_calculator.xml.flat",
-        "source": "com.example.androidoop.app-main-6:/layout/calculator.xml"
+        "merged": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-debug-4:\\mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "E:\\gradle-cache\\daemon\\8.13\\com.example.AndroidOOP1.app-main-6:\\mipmap-anydpi\\ic_launcher.xml"
     },
     {
-        "merged": "com.example.androidoop.app-debug-4:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.androidoop.app-main-6:/mipmap-xxxhdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "com.example.androidoop.app-debug-4:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.example.androidoop.app-main-6:/mipmap-mdpi/ic_launcher.webp"
-    },
-    {
-        "merged": "com.example.androidoop.app-debug-4:/drawable_ic_pause.xml.flat",
-        "source": "com.example.androidoop.app-main-6:/drawable/ic_pause.xml"
-    },
-    {
-        "merged": "com.example.androidoop.app-debug-4:/xml_backup_rules.xml.flat",
-        "source": "com.example.androidoop.app-main-6:/xml/backup_rules.xml"
-    },
-    {
-        "merged": "com.example.androidoop.app-debug-4:/drawable_ic_volume_up.xml.flat",
-        "source": "com.example.androidoop.app-main-6:/drawable/ic_volume_up.xml"
+        "merged": "com.example.AndroidOOP1.app-debug-4:/layout_activity_media_player.xml.flat",
+        "source": "com.example.AndroidOOP1.app-main-6:/layout/activity_media_player.xml"
     }
 ]

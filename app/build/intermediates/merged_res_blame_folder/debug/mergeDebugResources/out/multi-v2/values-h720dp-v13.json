@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.AndroidOOP1.app-mergeDebugResources-2:/values-h720dp-v13/values-h720dp-v13.xml",
+            "map": [
+                {
+                    "source": "E:\\gradle-cache\\caches\\8.13\\transforms\\b4955810418b932aff19f6475156d28c\\transformed\\appcompat-1.7.0\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "66",
+                        "endOffsets": "117"
+                    }
+                }
+            ]
+        }
+    ]
+}

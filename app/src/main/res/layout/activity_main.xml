@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp"
+    android:background="#FFFFFF">
+
+    <Button
+        android:id="@+id/btn_calculator"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="Calculator"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFFFFF"/>
+
+    <Button
+        android:id="@+id/btn_player"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="Media Player"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFFFFF"/>
+
+    <Button
+        android:id="@+id/btn_gps"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="GPS Navigation"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFFFFF"/>
+
+    <!-- Optional Views Button -->
+    <!--
+    <Button
+        android:id="@+id/btn_views"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="Database Views"
+        android:textSize="18sp"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFFFFF"/>
+    -->
+
+</LinearLayout>

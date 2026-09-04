@@ -9,99 +9,86 @@ import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import org.json.JSONObject
 import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
 import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import java.util.*
 
+class GpsActivity : AppCompatActivity(), LocationListener {
 
-class GpsActivity : LocationListener, AppCompatActivity() {
-
-    private val LOG_TAG: String = "GPS_ACTIVITY"
-    private val LOG_FILE_NAME = "location_log.json"
-
-    companion object {
-        private const val PERMISSION_REQUEST_ACCESS_LOCATION = 100
-    }
-
+    private val LOG_TAG = "GpsActivity"
     private lateinit var locationManager: LocationManager
     private lateinit var tvLat: TextView
     private lateinit var tvLon: TextView
     private lateinit var tvAlt: TextView
     private lateinit var tvTime: TextView
-    private lateinit var btnGetLocation: Button
+    private lateinit var btnBack: Button
+
+    companion object {
+        private const val PERMISSION_REQUEST_CODE = 100
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gps)
 
-        locationManager = this.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        tvLat = findViewById(R.id.tvLatitude)
-        tvLon = findViewById(R.id.tvLongitude)
-        tvAlt = findViewById(R.id.tvAltitude)
-        tvTime = findViewById(R.id.tvTime)
-        btnGetLocation = findViewById(R.id.btnGetLocation)
 
-        btnGetLocation.setOnClickListener {
-            updateCurrentLocation()
+        locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+
+        tvLat = findViewById(R.id.tvLat)
+        tvLon = findViewById(R.id.tvLon)
+        tvAlt = findViewById(R.id.tvAlt)
+        tvTime = findViewById(R.id.tvTime)
+        btnBack = findViewById(R.id.btnBack)
+
+        btnBack.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 
     override fun onResume() {
         super.onResume()
-        updateCurrentLocation()
+        updateLocation()
     }
 
     override fun onPause() {
         super.onPause()
-        locationManager.removeUpdates(this)
+
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            locationManager.removeUpdates(this)
+        }
     }
 
-    private fun updateCurrentLocation() {
+    private fun updateLocation() {
         if (checkPermissions()) {
             if (isLocationEnabled()) {
+                locationManager.requestLocationUpdates(
+                    LocationManager.GPS_PROVIDER,
+                    1000L,
+                    1f,
+                    this
+                )
 
-                if (ActivityCompat.checkSelfPermission(
-                        this,
-                        Manifest.permission.ACCESS_FINE_LOCATION
-                    ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                        this,
-                        Manifest.permission.ACCESS_COARSE_LOCATION
-                    ) != PackageManager.PERMISSION_GRANTED
-                ) {
-                    requestPermissions()
-                    return
-                }
-
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000L, 10f, this)
-                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000L, 10f, this)
-
-                val lastLocationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-                val lastLocationNet = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
-                val lastLocation = when {
-                    lastLocationGPS == null -> lastLocationNet
-                    lastLocationNet == null -> lastLocationGPS
-                    lastLocationGPS.time > lastLocationNet.time -> lastLocationGPS
-                    else -> lastLocationNet
-                }
-
+                // Получаем последнее известное местоположение
+                val lastLocation = getLastKnownLocation()
                 if (lastLocation != null) {
-                    onLocationChanged(lastLocation)
-                } else {
-                    Toast.makeText(this, "поиск спутника", Toast.LENGTH_SHORT).show()
+                    updateUI(lastLocation)
+                    saveToJson(lastLocation)
                 }
-
             } else {
-                Toast.makeText(applicationContext, "Включите геолокацию в настройках", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Включите геолокацию в настройках", Toast.LENGTH_SHORT).show()
                 val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                 startActivity(intent)
             }
@@ -110,20 +97,70 @@ class GpsActivity : LocationListener, AppCompatActivity() {
         }
     }
 
+    private fun getLastKnownLocation(): Location? {
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return null
+        }
+
+        val gpsLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+        val networkLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+
+        return if (gpsLocation != null && networkLocation != null) {
+            if (gpsLocation.time > networkLocation.time) gpsLocation else networkLocation
+        } else {
+            gpsLocation ?: networkLocation
+        }
+    }
+
+
+    override fun onLocationChanged(location: Location) {
+        updateUI(location)
+        saveToJson(location)
+    }
+
+    private fun updateUI(location: Location) {
+        tvLat.text = "Latitude: ${String.format("%.6f", location.latitude)}"
+        tvLon.text = "Longitude: ${String.format("%.6f", location.longitude)}"
+        tvAlt.text = "Altitude: ${String.format("%.2f", location.altitude)} м"
+        tvTime.text = "Time: ${SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date(location.time))}"
+    }
+
+
+    private fun saveToJson(location: Location) {
+        try {
+            val json = JSONObject()
+            json.put("latitude", location.latitude)
+            json.put("longitude", location.longitude)
+            json.put("altitude", location.altitude)
+            json.put("accuracy", location.accuracy)
+            json.put("timestamp", location.time)
+            json.put("time_string", SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date(location.time)))
+
+            val file = File(filesDir, "location.json")
+            file.writeText(json.toString(4))
+        } catch (e: Exception) {
+
+        }
+    }
+
+    private fun checkPermissions(): Boolean {
+        return ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
+    }
+
     private fun requestPermissions() {
         ActivityCompat.requestPermissions(
             this,
             arrayOf(
-                Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.ACCESS_FINE_LOCATION
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
             ),
-            PERMISSION_REQUEST_ACCESS_LOCATION
+            PERMISSION_REQUEST_CODE
         )
-    }
-
-    private fun checkPermissions(): Boolean {
-        return ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
     }
 
     override fun onRequestPermissionsResult(
@@ -132,58 +169,23 @@ class GpsActivity : LocationListener, AppCompatActivity() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == PERMISSION_REQUEST_ACCESS_LOCATION) {
+        if (requestCode == PERMISSION_REQUEST_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                updateCurrentLocation()
+                Toast.makeText(this, "Разрешение получено", Toast.LENGTH_SHORT).show()
+                updateLocation()
             } else {
-                Toast.makeText(applicationContext, "разрешения отклонены, геолокация не будет", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Разрешение отклонено", Toast.LENGTH_SHORT).show()
+                tvLat.text = "Permission denied"
+                tvLon.text = "Permission denied"
             }
         }
     }
 
     private fun isLocationEnabled(): Boolean {
-        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
-            LocationManager.NETWORK_PROVIDER
-        )
-    }
-
-    override fun onLocationChanged(location: Location) {
-        Log.d(LOG_TAG, "Location received: Lat=${location.latitude}")
-
-        val sdf = SimpleDateFormat("HH:mm:ss dd.MM.yyyy", Locale.getDefault())
-        val dateTime = sdf.format(Date(location.time))
-
-        tvLat.text = "Latitude: ${location.latitude}"
-        tvLon.text = "Longitude: ${location.longitude}"
-        tvAlt.text = "Altitude: ${String.format("%.2f м", location.altitude)}"
-        tvTime.text = "Time: $dateTime"
-
-        writeLocationToJson(location)
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
+                locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
     }
 
     override fun onProviderEnabled(provider: String) {}
     override fun onProviderDisabled(provider: String) {}
-
-
-
-    private fun writeLocationToJson(location: Location) {
-        try {
-            val jsonObject = JSONObject().apply {
-                put("timestamp", location.time)
-                put("datetime", SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault()).format(Date(location.time)))
-                put("latitude", location.latitude)
-                put("longitude", location.longitude)
-                put("altitude", location.altitude)
-            }
-
-            val jsonString = jsonObject.toString() + "\n"
-
-            val file = File(filesDir, LOG_FILE_NAME)
-
-            file.appendText(jsonString)
-
-        } catch (e: IOException) {
-            Log.e(LOG_TAG, "Ошибка записи файла", e)
-        }
-    }
 }

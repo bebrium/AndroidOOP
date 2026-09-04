@@ -10,17 +10,17 @@
     <TextView
         android:id="@+id/tvResult"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="0"
-        android:textSize="32sp"
-        android:textColor="#333333"
-        android:gravity="center_horizontal|center_vertical"
-        android:padding="16dp"
-        android:background="#F0F0F0"
+        android:layout_height="202dp"
         android:layout_marginBottom="16dp"
+        android:layout_weight="1"
+        android:background="#F0F0F0"
+        android:ellipsize="end"
+        android:gravity="center_horizontal|center_vertical"
         android:maxLines="1"
-        android:ellipsize="end"/>
+        android:padding="16dp"
+        android:text="0"
+        android:textColor="#333333"
+        android:textSize="32sp" />
 
 
     <GridLayout

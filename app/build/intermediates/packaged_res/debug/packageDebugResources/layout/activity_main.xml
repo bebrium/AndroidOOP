@@ -37,6 +37,19 @@
         android:backgroundTint="#4CAF50"
         android:textColor="#FFFFFF"/>
 
+
+
+    <Button
+        android:id="@+id/btnConnect"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="Server Connection"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFFFFF"/>
+
+
     <!-- Optional Views Button -->
     <!--
     <Button

@@ -7,10 +7,6 @@
     android:background="#f0f0f0"
     android:padding="5dp">
 
-    <!-- Название трека — начинается ПОСЛЕ Action Bar -->
-
-    <!-- Кнопки управления -->
-
     <TextView
         android:id="@+id/trackTitleTextView"
         android:layout_width="0dp"
@@ -72,7 +68,7 @@
 
     </LinearLayout>
 
-    <!-- Прогресс-бар и время -->
+
     <LinearLayout
         android:id="@+id/timeControls"
         android:layout_width="0dp"
@@ -139,7 +135,7 @@
 
     </LinearLayout>
 
-    <!-- Заголовок списка треков -->
+
     <TextView
         android:id="@+id/tracksLabel"
         android:layout_width="0dp"
@@ -152,7 +148,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Список треков -->
+
     <ListView
         android:id="@+id/tracksListView"
         android:layout_width="0dp"

@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.appcompat:appcompat-resources:1.7.0@aar" external-system-id="GRADLE">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../gradle-cache/caches/8.13/transforms/1c0c32d73ee8bfa3d966cd8b877fedb0/transformed/appcompat-resources-1.7.0/res" />
-      <root url="jar://$PROJECT_DIR$/../gradle-cache/caches/8.13/transforms/1c0c32d73ee8bfa3d966cd8b877fedb0/transformed/appcompat-resources-1.7.0/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/../gradle-cache/caches/8.13/transforms/1c0c32d73ee8bfa3d966cd8b877fedb0/transformed/appcompat-resources-1.7.0/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../gradle-cache/caches/8.13/transforms/3d959b9957768cd8df55ad1699a7ace4/transformed/appcompat-resources-1.7.0/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../gradle-cache/caches/8.13/transforms/3d959b9957768cd8df55ad1699a7ace4/transformed/appcompat-resources-1.7.0/res" />
+      <root url="file://$PROJECT_DIR$/../gradle-cache/caches/8.13/transforms/3d959b9957768cd8df55ad1699a7ace4/transformed/appcompat-resources-1.7.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

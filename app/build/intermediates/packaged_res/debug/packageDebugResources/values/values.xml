@@ -8,5 +8,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">AndroidOOP1</string>
-    <style name="Theme.AndroidOOP1" parent="android:Theme.Material.Light.NoActionBar"/>
+    <style name="Theme.AndroidOOP1" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#00796B</item>
+        <item name="colorPrimaryDark">#004D40</item>
+        <item name="colorAccent">#26A69A</item>
+    </style>
 </resources>

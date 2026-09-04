@@ -5,13 +5,18 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="26"
-        android:targetSdkVersion="36" />
+        android:minSdkVersion="30"
+        android:targetSdkVersion="34" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <permission
         android:name="com.example.AndroidOOP1.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
@@ -26,9 +31,10 @@
         android:extractNativeLibs="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:testOnly="true"
-        android:theme="@style/Theme.AppCompat.Light.DarkActionBar" > <!-- 👈 Установите здесь тему -->
-
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AndroidOOP1"
+        android:usesCleartextTraffic="true" >
         <activity
             android:name="com.example.AndroidOOP1.MainActivity"
             android:exported="true" >
@@ -41,6 +47,13 @@
         <activity android:name="com.example.AndroidOOP1.Calculator" />
         <activity android:name="com.example.AndroidOOP1.GpsActivity" />
         <activity android:name="com.example.AndroidOOP1.MediaPlayer" />
+        <activity android:name="com.example.AndroidOOP1.ZMQActivity" />
+
+        <service
+            android:name="com.example.AndroidOOP1.TelemetryService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="location" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

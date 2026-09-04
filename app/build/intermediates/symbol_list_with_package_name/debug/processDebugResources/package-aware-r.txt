@@ -3199,7 +3199,10 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
-id btnGetLocation
+id btnBack
+id btnConnect
+id btnStart
+id btnStop
 id btn_0
 id btn_1
 id btn_2
@@ -3336,6 +3339,7 @@ id graph_wrap
 id group_divider
 id grouping
 id groups
+id guidelineTop
 id header_title
 id hide_ime_id
 id hideable
@@ -3370,6 +3374,7 @@ id linear
 id listMode
 id list_item
 id m3_side_sheet
+id main
 id marquee
 id masked
 id match_constraint
@@ -3611,12 +3616,16 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
-id tvAltitude
-id tvLatitude
-id tvLongitude
+id tvAlt
+id tvLat
+id tvLon
 id tvResult
 id tvTime
-id tvTitle
+id txtCoords
+id txtNetwork
+id txtServerResponse
+id txtSignal
+id txtStatus
 id unchecked
 id uniform
 id unlabeled
@@ -3759,6 +3768,7 @@ layout activity_calculator
 layout activity_gps
 layout activity_main
 layout activity_media_player
+layout activity_zmq
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog

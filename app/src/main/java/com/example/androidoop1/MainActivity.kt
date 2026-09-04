@@ -19,13 +19,15 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btn_gps).setOnClickListener {
             goToActivity(GpsActivity::class.java)
         }
-        /*findViewById<Button>(R.id.btn_views).setOnClickListener {
-            goToActivity(ViewsActivity::class.java)
-        }*/
+
+        findViewById<Button>(R.id.btnConnect).setOnClickListener {
+            goToActivity(ZMQActivity::class.java)
+        }
+
     }
 
     private fun goToActivity(activityClass: Class<*>) {
-        val randomIntent = Intent(this, activityClass)
-        startActivity(randomIntent)
+        val intent = Intent(this, activityClass)
+        startActivity(intent)
     }
 }

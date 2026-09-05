@@ -51,7 +51,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6955205-6fb6-4401-8aaa-ee21852f8359" name="Changes" comment="Practica 4-12">
+    <list default="true" id="b6955205-6fb6-4401-8aaa-ee21852f8359" name="Changes" comment="Add Buffer">
       <change beforePath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.bin" afterDir="false" />
@@ -304,7 +304,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Practica 4-9" />
     <MESSAGE value="Practica 4-12" />
-    <option name="LAST_COMMIT_MESSAGE" value="Practica 4-12" />
+    <MESSAGE value="Add Buffer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Buffer" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">

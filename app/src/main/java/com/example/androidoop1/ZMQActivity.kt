@@ -30,16 +30,20 @@ class ZMQActivity : AppCompatActivity() {
 
     companion object {
         private const val PERMISSION_REQUEST_CODE = 100
+        private const val BACKGROUND_PERMISSION_CODE = 101
         private const val ACTION_STATUS_UPDATE = "BackGroundUpdate"
     }
 
-    private val requiredPermissions = arrayOf(
+    private val normalPermissions = arrayOf(
         Manifest.permission.ACCESS_FINE_LOCATION,
         Manifest.permission.ACCESS_COARSE_LOCATION,
-        Manifest.permission.ACCESS_BACKGROUND_LOCATION,
         Manifest.permission.READ_PHONE_STATE,
-        Manifest.permission.INTERNET,
         Manifest.permission.POST_NOTIFICATIONS
+    )
+
+
+    private val backgroundPermission = arrayOf(
+        Manifest.permission.ACCESS_BACKGROUND_LOCATION
     )
 
     private val broadcastReceiver = object : BroadcastReceiver() {
@@ -50,8 +54,13 @@ class ZMQActivity : AppCompatActivity() {
             val rsrp = intent?.getIntExtra("RSRP", 0) ?: 0
             val netType = intent?.getStringExtra("NetType") ?: "N/A"
             val cellsCount = intent?.getIntExtra("CellsCount", 0) ?: 0
+            val buffered = intent?.getIntExtra("Buffered", 0) ?: 0
 
-            txtServerResponse.text = "Сервер: $serverStatus"
+            txtServerResponse.text = if (buffered > 0)
+                "Сервер: $serverStatus | Буфер: $buffered"
+            else
+                "Сервер: $serverStatus"
+
             txtCoords.text = String.format("Координаты: %.5f, %.5f", lat, lon)
             txtSignal.text = "RSRP: $rsrp dBm"
             txtNetwork.text = "Сеть: $netType | Сот: $cellsCount"
@@ -71,8 +80,8 @@ class ZMQActivity : AppCompatActivity() {
         btnStop = findViewById(R.id.btnStop)
 
         btnStart.setOnClickListener {
-            if (checkPermissions()) startTelemetryService()
-            else requestPermissions()
+            if (checkNormalPermissions()) startTelemetryService()
+            else requestNormalPermissions()
         }
 
         btnStop.setOnClickListener {
@@ -94,14 +103,14 @@ class ZMQActivity : AppCompatActivity() {
         LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver)
     }
 
-    private fun checkPermissions(): Boolean {
-        return requiredPermissions.all { permission ->
+    private fun checkNormalPermissions(): Boolean {
+        return normalPermissions.all { permission ->
             ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
         }
     }
 
-    private fun requestPermissions() {
-        ActivityCompat.requestPermissions(this, requiredPermissions, PERMISSION_REQUEST_CODE)
+    private fun requestNormalPermissions() {
+        ActivityCompat.requestPermissions(this, normalPermissions, PERMISSION_REQUEST_CODE)
     }
 
     override fun onRequestPermissionsResult(
@@ -110,21 +119,47 @@ class ZMQActivity : AppCompatActivity() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == PERMISSION_REQUEST_CODE) {
-            val allGranted = grantResults.isNotEmpty() && grantResults.all { it == PackageManager.PERMISSION_GRANTED }
-            if (allGranted) {
-                Toast.makeText(this, "Все разрешения получены", Toast.LENGTH_SHORT).show()
-                startTelemetryService()
-            } else {
-                Toast.makeText(this, "Разрешения отклонены", Toast.LENGTH_LONG).show()
-                txtStatus.text = "Статус: Нет прав"
+
+        when (requestCode) {
+            PERMISSION_REQUEST_CODE -> {
+                val allGranted = grantResults.isNotEmpty() &&
+                        grantResults.all { it == PackageManager.PERMISSION_GRANTED }
+                if (allGranted) {
+                    Toast.makeText(this, "Основные разрешения получены", Toast.LENGTH_SHORT).show()
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                        ActivityCompat.requestPermissions(
+                            this,
+                            backgroundPermission,
+                            BACKGROUND_PERMISSION_CODE
+                        )
+                    } else {
+                        startTelemetryService()
+                    }
+                } else {
+                    Toast.makeText(this, "Разрешения отклонены", Toast.LENGTH_LONG).show()
+                    txtStatus.text = "Статус: Нет прав"
+                }
+                updateStatusText()
             }
-            updateStatusText()
+
+            BACKGROUND_PERMISSION_CODE -> {
+
+                val granted = grantResults.isNotEmpty() &&
+                        grantResults[0] == PackageManager.PERMISSION_GRANTED
+                if (!granted) {
+                    Toast.makeText(
+                        this,
+                        "Фоновая геолокация не разрешена — сервис будет работать, пока приложение открыто",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                startTelemetryService()
+            }
         }
     }
 
     private fun updateStatusText() {
-        if (checkPermissions()) {
+        if (checkNormalPermissions()) {
             txtStatus.text = if (isServiceRunning) "Статус: Запущен" else "Статус: Готов к запуску"
             txtStatus.setTextColor(getColor(android.R.color.holo_green_dark))
         } else {
